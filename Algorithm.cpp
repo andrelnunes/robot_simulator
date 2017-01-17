@@ -3,6 +3,8 @@
 #include <math.h>
 #include <stack>
 
+// Defines the positioning of the robot in the simulation map 
+
 const int n= 100; // horizontal size of the map
 const int m= 100; // vertical size size of the map
 static int dx[8]={1, 1, 0, -1, -1, -1, 0, 1};
@@ -22,6 +24,9 @@ static int last_known_y;
 };*/
 
 static node open_nodes[n][m];
+
+//Navigation function based in the global map provided
+//Flags visited nodes
 
 void InitializeStartGoalNavigation(IplImage* pGlobalMap, ROBOTINFO &robotInfo)
 {
@@ -231,6 +236,7 @@ void InitializeStartGoalNavigation(IplImage* pGlobalMap, ROBOTINFO &robotInfo)
 	
 }
 
+//Sets up the target position and adjust the parameters to reach it
 bool RunStartGoalNavigation(IplImage* pGlobalMap, ROBOTINFO &robotInfo, float *v_target, float *w_target)
 {
 	float temp_cost = 10000;
